@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      /* Toggle B */
+      input:checked ~ .dot {
+        transform: translateX(100%);
+        background-color: #48bb78;
+      }
+    </style>
+    <script>
+      tailwind.config  =  {
+        darkMode: "class"
+      }
+    </script>
+  </head>
+  <body class=" dark:bg-slate-800">
+    <div class="flex justify-center min-h-screen items-center">
+      <div class="shadow-lg p-5 rounded-xl dark:bg-slate-500 ">
+        <!-- Toggle B -->
+        <div class="items-center justify-center w-full mb-12">
+          <label for="toggleB" class="flex items-center cursor-pointer">
+            <!-- toggle -->
+            <div class="relative">
+              <!-- input -->
+              <input type="checkbox" id="toggleB" class="sr-only" />
+              <!-- line -->
+              <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+              <!-- dot -->
+              <div
+                class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"
+              ></div>
+            </div>
+            <!-- label -->
+            <div class="ml-3 text-gray-700 font-medium dark:text-white font-serif">Toggle Me!</div>
+          </label>
+        </div>
+        <!-- Toggle B -->
+
+        <h1 class="font-serif font-bold mb-5 text-center text-4xl">Login</h1>
+        <input
+          type="text"
+          class="p-3 w-full border rounded-lg font-bold mb-5 active:scale-75 duration-300"
+          placeholder="Enter your Email"
+        />
+        <input
+          type="password"
+          class="p-3 w-full border font-bold rounded-lg mb-5 active:scale-75 duration-300"
+          placeholder="Enter your Password"
+        />
+        <button
+          type="button"
+          class="hover:bg-red-300 active:scale-75 mb-5 duration-300 text-white font-serif text-xl p-3 bg-red-500 w-full border rounded-3xl bg-red"
+        >
+          Enter Your Login
+        </button>
+
+        <div class="flex justify-between">
+          <span class="font-serif font-bold">Forget Password</span>
+          <span class="font-serif font-bold">Create New Account</span>
+        </div>
+
+        <div class="border my-5"></div>
+
+        <div class="flex space-x-3">
+          <button
+            type="button"
+            class="active:scale-90 duration-300 border-red-500 flex justify-center items-center mb-5 font-serif text-xl p-3 outline-red-500 w-full space-x-3 border rounded-xl bg-red"
+          >
+          <i class="fa-brands fa-google" style="color: #FFD43B;"></i>
+            <span>Google</span>
+          </button>
+
+          <button
+            type="button"
+            class="active:scale-90 duration-300 border-red-500 flex justify-center items-center mb-5 font-serif text-xl p-3 outline-red-500 w-full border space-x-3 rounded-xl bg-red"
+          >
+            <i class="fa-brands fa-facebook" style="color: #74C0FC;"></i>
+            <span>Facebook</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      const toggleB =  document.getElementById("toggleB");
+
+
+      const changeThemeToDark  =  () => {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("data-theme", "dark")
+      }
+
+      const changeThemeToLight  =  () => {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("data-theme", "light")
+
+      }
+
+      
+      
+      toggleB.addEventListener("click",() => {
+        const theme =  localStorage.getItem("data-theme");
+        if(theme === "dark"){
+          changeThemeToLight();
+        }else{
+          changeThemeToDark();
+        }
+      })
+
+
+      const theme =  localStorage.getItem("data-theme");
+        if(theme === "dark"){
+          changeThemeToDark();
+          toggleB.setAttribute("checked", "checked")
+        }else{
+          changeThemeToLight();
+        }
+    </script>
+  </body>
+</html>
